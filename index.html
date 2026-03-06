@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Upshiftt Media — AI-Powered Listing Ads</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --teal: #4DD9C0;
+    --teal-dim: rgba(77,217,192,0.12);
+    --teal-glow: rgba(77,217,192,0.06);
+    --black: #000000;
+    --dark: #080808;
+    --dark2: #0f0f0f;
+    --dark3: #161616;
+    --white: #ffffff;
+    --gray: #888888;
+    --gray-light: #bbbbbb;
+    --gray-dark: #333333;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--teal);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(77,217,192,0.4);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.35s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring.hover { width: 56px; height: 56px; border-color: var(--teal); opacity: 0.6; }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.028;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--teal); }
+
+  .nav-cta {
+    background: var(--teal);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border: none;
+    cursor: none;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: #3dc9b0; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-glow {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(77,217,192,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-bg-glow2 {
+    position: absolute;
+    bottom: -20%;
+    left: -15%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(77,217,192,0.04) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 9vw, 130px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    max-width: 900px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+
+  .hero-headline em {
+    font-style: normal;
+    color: var(--teal);
+    position: relative;
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: var(--gray-light);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.65s forwards;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border: none;
+    cursor: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    background: #3dc9b0;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(77,217,192,0.25);
+  }
+
+  .btn-ghost {
+    color: var(--gray);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gray-dark);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--teal); border-color: var(--teal); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+  }
+  .hero-scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--teal);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  .hero-scroll span {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+  }
+
+  /* PROBLEM SECTION */
+  .section-problem {
+    padding: 120px 48px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 1100px;
+  }
+
+  .problem-card {
+    background: var(--dark2);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .problem-card:hover { background: var(--dark3); }
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--teal);
+    transition: height 0.4s ease;
+  }
+  .problem-card:hover::before { height: 100%; }
+
+  .problem-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: rgba(77,217,192,0.06);
+    position: absolute;
+    top: 20px; right: 24px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .problem-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    color: var(--white);
+  }
+
+  .problem-card p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* METHOD SECTION */
+  .section-method {
+    padding: 120px 48px;
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .method-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 280px;
+    color: rgba(77,217,192,0.02);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 10px;
+    user-select: none;
+  }
+
+  .method-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 80px;
+  }
+
+  .method-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .method-header p {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 400px;
+    align-self: end;
+  }
+
+  .method-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .method-step {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 40px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+    cursor: none;
+    transition: background 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .method-step:hover {
+    background: rgba(77,217,192,0.04);
+    border-color: rgba(77,217,192,0.15);
+  }
+  .method-step:hover .step-num { color: var(--teal); }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--gray-dark);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .step-content h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .step-content p {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .step-icon {
+    font-size: 28px;
+    opacity: 0.5;
+  }
+
+  .step-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--teal);
+    background: var(--teal-dim);
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+
+  /* WHO IT'S FOR */
+  .section-who {
+    padding: 120px 48px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1100px;
+  }
+
+  .who-left h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 5vw, 72px);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .who-left p {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+
+  .who-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .who-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    border-left: 2px solid var(--gray-dark);
+    transition: border-color 0.3s;
+  }
+  .who-check:hover { border-color: var(--teal); }
+
+  .who-check-mark {
+    color: var(--teal);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .who-check-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray-light);
+    font-weight: 300;
+  }
+  .who-check-text strong {
+    color: var(--white);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 16px;
+  }
+
+  .who-right {
+    padding-top: 16px;
+  }
+
+  .market-card {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 48px 40px;
+    margin-bottom: 2px;
+    position: relative;
+  }
+
+  .market-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--teal);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .market-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .market-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--teal);
+    border: 1px solid rgba(77,217,192,0.3);
+    padding: 4px 8px;
+  }
+
+  /* ABOUT */
+  .section-about {
+    padding: 120px 48px;
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1100px;
+  }
+
+  .about-photo-wrap {
+    position: relative;
+  }
+
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-photo-placeholder {
+    text-align: center;
+  }
+
+  .about-photo-placeholder .initials {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: var(--teal);
+    opacity: 0.3;
+    line-height: 1;
+    display: block;
+  }
+
+  .about-photo-placeholder span {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gray-dark);
+    display: block;
+    margin-top: 12px;
+  }
+
+  .about-photo-accent {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 80px;
+    height: 80px;
+    background: var(--teal);
+    z-index: -1;
+  }
+
+  .about-content .section-label { margin-bottom: 32px; }
+
+  .about-content h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 4vw, 58px);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+
+  .about-content p {
+    font-size: 15px;
+    color: var(--gray-light);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .about-detail {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .about-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--gray);
+  }
+  .about-detail-item::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+
+  /* FINAL CTA */
+  .section-cta {
+    padding: 160px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .cta-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(77,217,192,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .section-cta .section-label {
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  .section-cta .section-label::before { display: none; }
+
+  .cta-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 7vw, 100px);
+    line-height: 0.95;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-sub {
+    font-size: 16px;
+    color: var(--gray);
+    max-width: 420px;
+    margin: 0 auto 48px;
+    line-height: 1.65;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-btn-wrap {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-large {
+    background: var(--teal);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 20px 52px;
+    border: none;
+    cursor: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-large:hover {
+    background: #3dc9b0;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(77,217,192,0.3);
+  }
+
+  .cta-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 48px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--teal); }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .footer-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gray-dark);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal); }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--gray-dark);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollLine {
+    0% { left: -100%; }
+    50% { left: 0%; }
+    100% { left: 100%; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .hero { padding: 120px 24px 80px; }
+    .hero-headline { font-size: 58px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .hero-scroll { left: 24px; }
+
+    .section-problem,
+    .section-method,
+    .section-who,
+    .section-about,
+    .section-cta { padding: 80px 24px; }
+
+    .problem-grid { grid-template-columns: 1fr; }
+    .method-header { grid-template-columns: 1fr; gap: 24px; }
+    .method-step { grid-template-columns: 60px 1fr; }
+    .step-icon { display: none; }
+    .who-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo { aspect-ratio: 3/2; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">UPSHIFTT<span>.</span></a>
+  <a href="https://calendly.com/joel-upshiftt/30min" target="_blank" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-bg-glow2"></div>
+
+  <p class="hero-eyebrow">AI-Powered Listing Ads · Monterey Bay & Silicon Valley</p>
+
+  <h1 class="hero-headline">
+    Most listing<br/>ads are a<br/><em>waste of money.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Upshiftt is an AI ad agency built exclusively for real estate agents. We build a Buyer Intelligence Report for every listing before running a single ad.
+  </p>
+
+  <div class="hero-actions">
+    <a href="https://calendly.com/joel-upshiftt/30min" target="_blank" class="btn-primary">Book a Free Strategy Call</a>
+    <a href="#method" class="btn-ghost">See How It Works ↓</a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section-problem">
+  <p class="section-label reveal">The Problem</p>
+  <div class="problem-grid">
+    <div class="problem-card reveal reveal-delay-1">
+      <div class="problem-num">01</div>
+      <h3>You're Targeting Everyone</h3>
+      <p>Boosted posts go to whoever Meta's algorithm decides. No buyer profile. No strategy. Just spend and hope.</p>
+    </div>
+    <div class="problem-card reveal reveal-delay-2">
+      <div class="problem-num">02</div>
+      <h3>Your Creative Is Generic</h3>
+      <p>A listing photo with a caption isn't an ad. It's a post. Buyers scroll past it in 0.3 seconds.</p>
+    </div>
+    <div class="problem-card reveal reveal-delay-3">
+      <div class="problem-num">03</div>
+      <h3>You Have No Data</h3>
+      <p>Without a real campaign structure, you're flying blind. No optimization. No reporting. No learning.</p>
+    </div>
+    <div class="problem-card reveal reveal-delay-4">
+      <div class="problem-num">04</div>
+      <h3>Your Sellers Deserve Better</h3>
+      <p>You won the listing. Now your marketing needs to match the quality of your work — and your commission.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="section-method" id="method">
+  <div class="method-bg-text">METHOD</div>
+
+  <div class="method-header">
+    <div>
+      <p class="section-label reveal">The Upshiftt Method</p>
+      <h2 class="reveal">Five Steps.<br/>Zero Guesswork.</h2>
+    </div>
+    <p class="reveal">Every campaign runs through the same 5-step AI system — so nothing is left to chance and every dollar works harder.</p>
+  </div>
+
+  <div class="method-steps">
+    <div class="method-step reveal">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h3>Buyer Intelligence Report</h3>
+        <p>A full AI profile of your ideal buyer — demographics, motivations, objections — before a single ad runs.</p>
+      </div>
+      <div>
+        <div class="step-tag">Foundation</div>
+      </div>
+    </div>
+    <div class="method-step reveal reveal-delay-1">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h3>Listing DNA Analysis</h3>
+        <p>We match every selling point to what your target buyer actually cares about.</p>
+      </div>
+      <div>
+        <div class="step-tag">Research</div>
+      </div>
+    </div>
+    <div class="method-step reveal reveal-delay-2">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h3>Ad Creative Generation</h3>
+        <p>AI-crafted copy and visuals built for your buyer. Not a template.</p>
+      </div>
+      <div>
+        <div class="step-tag">Creative</div>
+      </div>
+    </div>
+    <div class="method-step reveal reveal-delay-3">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <h3>Precision Targeting Setup</h3>
+        <p>Campaigns built to reach the right buyer at the right moment.</p>
+      </div>
+      <div>
+        <div class="step-tag">Launch</div>
+      </div>
+    </div>
+    <div class="method-step reveal reveal-delay-4">
+      <div class="step-num">05</div>
+      <div class="step-content">
+        <h3>Optimize & Report</h3>
+        <p>Weekly reporting. Live monitoring. You always know what's working.</p>
+      </div>
+      <div>
+        <div class="step-tag">Results</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="section-who">
+  <div class="who-grid">
+    <div class="who-left">
+      <p class="section-label reveal">Who It's For</p>
+      <h2 class="reveal">Built for agents who take their listings seriously.</h2>
+      <p class="reveal">We don't work with everyone. Upshiftt is for a specific kind of agent — one who knows their marketing should match the quality of their work.</p>
+      <div class="who-checks">
+        <div class="who-check reveal">
+          <span class="who-check-mark">✓</span>
+          <div class="who-check-text">
+            <strong>You have listings worth marketing.</strong>
+            Quality properties deserve a real strategy — not a boosted post.
+          </div>
+        </div>
+        <div class="who-check reveal reveal-delay-1">
+          <span class="who-check-mark">✓</span>
+          <div class="who-check-text">
+            <strong>You want to impress your sellers.</strong>
+            Win the listing, then show up with marketing that proves you earned it.
+          </div>
+        </div>
+        <div class="who-check reveal reveal-delay-2">
+          <span class="who-check-mark">✓</span>
+          <div class="who-check-text">
+            <strong>You're ready to stop winging it.</strong>
+            Done with guesswork. Ready for a real system, real data, real results.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="who-right">
+      <div class="market-card reveal">
+        <div class="market-badge">Market 01</div>
+        <h3>Monterey Bay</h3>
+        <p>Santa Cruz · Scotts Valley · Aptos · Capitola · Carmel · Pacific Grove</p>
+      </div>
+      <div class="market-card reveal reveal-delay-1">
+        <div class="market-badge">Market 02</div>
+        <h3>Silicon Valley</h3>
+        <p>San Jose · Los Gatos · Saratoga · Campbell · Los Altos · Palo Alto</p>
+      </div>
+      <div class="market-card reveal reveal-delay-2" style="background: var(--teal-dim); border-color: rgba(77,217,192,0.2);">
+        <h3 style="color: var(--white); font-size: 20px; margin-bottom: 12px;">Currently accepting founding clients.</h3>
+        <p style="color: var(--gray-light);">Founding client pricing available for agents who move first. Limited spots.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-about">
+  <div class="about-inner">
+    <div class="about-photo-wrap reveal">
+      <div class="about-photo">
+        <div class="about-photo-placeholder">
+          <span class="initials">JF</span>
+          <span>Add your photo here</span>
+        </div>
+      </div>
+      <div class="about-photo-accent"></div>
+    </div>
+    <div class="about-content">
+      <p class="section-label reveal">The Founder</p>
+      <h2 class="reveal">Hi, I'm Joel.<br/>I built Upshiftt for agents like you.</h2>
+      <p class="reveal">I started Upshiftt because I kept seeing the same thing — great agents with great listings running the same tired ads as everyone else. You deserve better than a boosted post.</p>
+      <p class="reveal reveal-delay-1">The Upshiftt Method is a 5-step AI system I built to change that. Every campaign starts with deep buyer research, not guesswork — so your ad budget works harder and your listings get in front of the right people.</p>
+      <div class="about-detail reveal reveal-delay-2">
+        <div class="about-detail-item">Serving Monterey Bay & Silicon Valley</div>
+        <div class="about-detail-item">Powered by Claude AI + proven ad systems</div>
+        <div class="about-detail-item"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c6aca9a3aa86b3b6b5aeafa0b2b2e8a5a9ab">[email&#160;protected]</a> · @upshifttmedia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section-cta">
+  <div class="cta-glow"></div>
+  <p class="section-label reveal">Ready?</p>
+  <h2 class="cta-headline reveal">Let's talk<br/>about your<br/><span style="color: var(--teal);">listing.</span></h2>
+  <p class="cta-sub reveal">Book a free 30-minute strategy call. We'll look at your listing, map out your ideal buyer, and show you exactly what an Upshiftt campaign would look like.</p>
+  <div class="cta-btn-wrap reveal">
+    <a href="https://calendly.com/joel-upshiftt/30min" target="_blank" class="btn-large">Book Your Free Strategy Call</a>
+    <span class="cta-note">No commitment. No pitch deck. Just strategy.</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">UPSHIFTT<span>.</span></a>
+  <div class="footer-links">
+    <a href="https://instagram.com/upshifttmedia" target="_blank">@upshifttmedia</a>
+    <a href="/cdn-cgi/l/email-protection#355f5a5059754045465d5c5341411b565a58"><span class="__cf_email__" data-cfemail="0f65606a634f7a7f7c6766697b7b216c6062">[email&#160;protected]</span></a>
+    <a href="https://upshiftt.com" target="_blank">upshiftt.com</a>
+  </div>
+  <span class="footer-copy">© 2026 Upshiftt Media</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  });
+
+  //
