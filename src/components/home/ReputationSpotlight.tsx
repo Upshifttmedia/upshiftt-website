@@ -148,8 +148,8 @@ export default function ReputationSpotlight() {
           </div>
 
           {/* Right column — image card */}
-          <FadeIn delay={0.15} direction="left" className="relative min-h-[480px] lg:min-h-[600px]">
-            <div className="relative w-full h-full min-h-[480px] lg:min-h-[600px] rounded-2xl overflow-hidden border border-teal-500/20">
+          <FadeIn delay={0.15} direction="left">
+            <div className="relative w-full h-[500px] rounded-2xl overflow-hidden border border-teal-500/20">
               <Image
                 src="/reputation.jpg"
                 alt="Customer leaving a 5-star Google review"
