@@ -50,7 +50,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative bg-[#0D0D0D] py-24 md:py-36 overflow-hidden">
+    <section className="relative bg-[#0D0D0D] pt-16 pb-24 md:pt-20 md:pb-32 overflow-hidden">
       {/* Background accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-[#4DD9C0]/30" />
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import Problem from "@/components/home/Problem";
 import HowItWorks from "@/components/home/HowItWorks";
+import ReputationSpotlight from "@/components/home/ReputationSpotlight";
 import WhatIsIncluded from "@/components/home/WhatIsIncluded";
 import SocialProof from "@/components/home/SocialProof";
 import HomeCTA from "@/components/home/HomeCTA";
@@ -24,6 +25,7 @@ export default function HomePage() {
       <Hero />
       <Problem />
       <HowItWorks />
+      <ReputationSpotlight />
       <WhatIsIncluded />
       <SocialProof />
       <HomeCTA />

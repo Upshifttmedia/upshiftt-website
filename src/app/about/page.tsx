@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import HeroHeading from "@/components/HeroHeading";
 import AnimatedText from "@/components/AnimatedText";
 import FadeIn from "@/components/FadeIn";
 
@@ -40,7 +41,7 @@ export default function AboutPage() {
   return (
     <div className="bg-[#0A0A0A] min-h-screen">
       {/* Hero */}
-      <section className="relative pt-40 pb-24 overflow-hidden">
+      <section className="relative pt-40 pb-24 overflow-hidden" style={{ minHeight: "60vh" }}>
         <div className="absolute inset-0 pointer-events-none">
           <Image
             src="/about-bg.jpg"
@@ -50,20 +51,20 @@ export default function AboutPage() {
             priority
             quality={80}
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/45" />
         </div>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex items-center gap-3 mb-8">
             <span className="w-8 h-px bg-[#4DD9C0]" />
             <span className="text-[#4DD9C0] text-xs font-semibold uppercase tracking-[0.2em] font-[family-name:var(--font-syne)]">
               About Us
             </span>
           </div>
-          <h1 className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-7xl text-white leading-tight mb-6">
+          <HeroHeading className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-7xl text-white leading-tight mb-6">
             We&apos;re Local.
             <br />
             We Get It.
-          </h1>
+          </HeroHeading>
           <p className="text-white/80 text-xl max-w-2xl leading-relaxed">
             Upshiftt was built right here on the Central Coast for the service
             businesses that keep our communities running.

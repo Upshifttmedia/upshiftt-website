@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import HeroHeading from "@/components/HeroHeading";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
@@ -91,6 +92,9 @@ const services = [
       "Dramatically increases review volume",
       "Builds trust with new potential customers",
     ],
+    spotlight: true,
+    extra:
+      "Most businesses never ask for reviews — and the ones that do, forget. Upshiftt sends a perfectly timed, personalized message after every completed job. Your Google rating climbs every month without any extra effort on your part. More reviews means higher placement in Google search results, which means more calls, which means more jobs.",
   },
   {
     number: "06",
@@ -113,7 +117,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-[#0A0A0A] min-h-screen">
       {/* Hero */}
-      <section className="relative pt-40 pb-24 overflow-hidden">
+      <section className="relative pt-40 pb-24 overflow-hidden" style={{ minHeight: "60vh" }}>
         <div className="absolute inset-0 pointer-events-none">
           <Image
             src="/services-bg.jpg"
@@ -123,20 +127,20 @@ export default function ServicesPage() {
             priority
             quality={80}
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/45" />
         </div>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex items-center gap-3 mb-8">
             <span className="w-8 h-px bg-[#4DD9C0]" />
             <span className="text-[#4DD9C0] text-xs font-semibold uppercase tracking-[0.2em] font-[family-name:var(--font-syne)]">
               Services
             </span>
           </div>
-          <h1 className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-7xl text-white leading-tight mb-6">
+          <HeroHeading className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-7xl text-white leading-tight mb-6">
             One System.
             <br />
             Total Coverage.
-          </h1>
+          </HeroHeading>
           <p className="text-white/80 text-xl max-w-2xl leading-relaxed">
             Every tool your business needs to capture, follow up, and grow —
             without adding to your plate.
@@ -149,7 +153,14 @@ export default function ServicesPage() {
         <div className="flex flex-col gap-8">
           {services.map((svc, i) => (
             <FadeIn key={i} delay={0.1}>
-              <div className="group grid lg:grid-cols-[1fr_2fr] gap-8 bg-white/[0.03] border border-white/5 rounded-2xl p-8 md:p-10 hover:border-white/10 hover:bg-white/[0.04] transition-all duration-500">
+              <div
+                className={`group grid lg:grid-cols-[1fr_2fr] gap-8 rounded-2xl p-8 md:p-10 transition-all duration-500 ${
+                  svc.spotlight
+                    ? "bg-[#161616] border-l-2 border-white/5 hover:border-white/10"
+                    : "bg-white/[0.03] border border-white/5 hover:border-white/10 hover:bg-white/[0.04]"
+                }`}
+                style={svc.spotlight ? { borderLeftColor: "#4DD9C0", borderLeftWidth: "2px" } : {}}
+              >
                 {/* Left */}
                 <div>
                   <div className="flex items-center gap-4 mb-6">
@@ -181,7 +192,7 @@ export default function ServicesPage() {
                   <p className="text-white/55 text-base leading-relaxed mb-6">
                     {svc.description}
                   </p>
-                  <ul className="flex flex-col gap-3">
+                  <ul className="flex flex-col gap-3 mb-6">
                     {svc.bullets.map((bullet, j) => (
                       <li key={j} className="flex items-start gap-3">
                         <span
@@ -192,6 +203,11 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
+                  {"extra" in svc && svc.extra && (
+                    <p className="text-white/70 text-sm leading-relaxed border-t border-white/5 pt-6">
+                      {svc.extra}
+                    </p>
+                  )}
                 </div>
               </div>
             </FadeIn>
