@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const CALENDLY = "https://calendly.com/joel-upshiftt/30min";
@@ -31,10 +32,8 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-18 py-5">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-0 group">
-          <span className="font-[family-name:var(--font-syne)] text-xl font-800 tracking-widest text-white uppercase">
-            UPSHIF<span className="text-[#4DD9C0]">TT</span>
-          </span>
+        <Link href="/" className="flex items-center group">
+          <Image src="/logo.png" alt="Upshiftt" width={140} height={40} className="h-9 w-auto" priority />
         </Link>
 
         {/* Desktop Nav */}

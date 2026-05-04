@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import AnimatedText from "@/components/AnimatedText";
 import FadeIn from "@/components/FadeIn";
 
@@ -41,7 +42,15 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#4DD9C0]/5 blur-[120px]" />
+          <Image
+            src="/about-bg.jpg"
+            alt="About Upshiftt background"
+            fill
+            className="object-cover opacity-20"
+            priority
+            quality={80}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-[#0A0A0A]/80 to-[#0A0A0A]" />
         </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <FadeIn className="flex items-center gap-3 mb-8">
@@ -96,8 +105,8 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="mt-10 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#4DD9C0]/10 border border-[#4DD9C0]/20 flex items-center justify-center">
-                  <span className="text-[#4DD9C0] font-[family-name:var(--font-syne)] font-bold text-lg">J</span>
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10">
+                  <Image src="/headshot.jpg" alt="Joel Hopkins" width={48} height={48} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <p className="font-[family-name:var(--font-syne)] font-semibold text-white">
@@ -111,17 +120,17 @@ export default function AboutPage() {
             </div>
           </FadeIn>
 
-          {/* Headshot placeholder */}
+          {/* Headshot */}
           <FadeIn delay={0.2} direction="left">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4DD9C0]/10 to-transparent" />
-              <div className="text-center p-10">
-                <div className="w-24 h-24 rounded-full bg-[#4DD9C0]/10 border border-[#4DD9C0]/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-[#4DD9C0] font-[family-name:var(--font-syne)] font-bold text-4xl">J</span>
-                </div>
-                <p className="text-white/30 text-sm">Joel Hopkins</p>
-                <p className="text-white/20 text-xs mt-1">Founder, Upshiftt</p>
-              </div>
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
+              <Image
+                src="/headshot.jpg"
+                alt="Joel Hopkins, Founder of Upshiftt"
+                width={400}
+                height={500}
+                className="w-full h-full object-cover rounded-2xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/50 to-transparent" />
             </div>
           </FadeIn>
         </div>

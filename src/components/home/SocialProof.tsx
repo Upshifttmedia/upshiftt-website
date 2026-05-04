@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import AnimatedText from "@/components/AnimatedText";
 
@@ -50,6 +51,20 @@ export default function SocialProof() {
             </p>
           </FadeIn>
         </div>
+
+        {/* Local scene image */}
+        <FadeIn className="mb-12">
+          <div className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden border border-white/5">
+            <Image
+              src="/local-scene.jpg"
+              alt="Local service businesses on the Central Coast"
+              fill
+              className="object-cover"
+              quality={85}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/60 via-transparent to-[#0D0D0D]/60" />
+          </div>
+        </FadeIn>
 
         {/* Testimonial cards */}
         <div className="grid md:grid-cols-3 gap-6">

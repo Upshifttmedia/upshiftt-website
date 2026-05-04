@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,9 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-block mb-4">
-              <span className="font-[family-name:var(--font-syne)] text-xl font-800 tracking-widest text-white uppercase">
-                UPSHIF<span className="text-[#4DD9C0]">TT</span>
-              </span>
+              <Image src="/logo.png" alt="Upshiftt" width={140} height={40} className="h-8 w-auto" />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               24/7 call answering and automation for local service businesses on

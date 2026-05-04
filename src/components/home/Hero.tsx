@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 
@@ -19,10 +20,18 @@ export default function Hero() {
     >
       {/* Parallax background */}
       <motion.div className="absolute inset-0 z-0" style={{ y }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#0D1512] to-[#0A0A0A]" />
-        {/* Teal glow */}
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-[#4DD9C0]/5 blur-[120px]" />
-        <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-[#4DD9C0]/3 blur-[100px]" />
+        <Image
+          src="/hero-bg.jpg"
+          alt="Upshiftt hero background"
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60" />
+        {/* Teal glow on top of photo */}
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-[#4DD9C0]/8 blur-[120px]" />
       </motion.div>
 
       {/* Grid overlay */}

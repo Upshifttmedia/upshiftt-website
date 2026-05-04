@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import AnimatedText from "@/components/AnimatedText";
 import FadeIn from "@/components/FadeIn";
 
@@ -115,7 +116,15 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="relative pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#4DD9C0]/5 blur-[120px]" />
+          <Image
+            src="/services-bg.jpg"
+            alt="Services background"
+            fill
+            className="object-cover opacity-15"
+            priority
+            quality={80}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/70 via-[#0A0A0A]/85 to-[#0A0A0A]" />
         </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <FadeIn className="flex items-center gap-3 mb-8">
