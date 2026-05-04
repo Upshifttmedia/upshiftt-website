@@ -50,7 +50,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative bg-[#0D0D0D] py-28 md:py-40 overflow-hidden">
+    <section className="relative bg-[#0D0D0D] py-24 md:py-36 overflow-hidden">
       {/* Background accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-[#4DD9C0]/30" />
 
@@ -91,7 +91,7 @@ export default function HowItWorks() {
                 <h3 className="font-[family-name:var(--font-syne)] font-bold text-lg text-white mb-3 leading-snug">
                   {step.label}
                 </h3>
-                <p className="text-white/45 text-sm leading-relaxed">
+                <p className="text-white/80 leading-relaxed" style={{ fontSize: "15px" }}>
                   {step.description}
                 </p>
 

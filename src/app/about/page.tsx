@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import HeroHeading from "@/components/HeroHeading";
 import AnimatedText from "@/components/AnimatedText";
 import FadeIn from "@/components/FadeIn";
 
@@ -46,11 +47,11 @@ export default function AboutPage() {
             src="/about-bg.jpg"
             alt="About Upshiftt background"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-30"
             priority
             quality={80}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-[#0A0A0A]/80 to-[#0A0A0A]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-[#0A0A0A]" />
         </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <FadeIn className="flex items-center gap-3 mb-8">
@@ -59,13 +60,13 @@ export default function AboutPage() {
               About Us
             </span>
           </FadeIn>
-          <h1 className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-7xl text-white leading-tight mb-6">
-            <AnimatedText text="We're Local." delay={0.1} />
+          <HeroHeading className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-7xl text-white leading-tight mb-6">
+            We&apos;re Local.
             <br />
-            <AnimatedText text="We Get It." delay={0.25} />
-          </h1>
-          <FadeIn delay={0.4}>
-            <p className="text-white/55 text-xl max-w-2xl leading-relaxed">
+            We Get It.
+          </HeroHeading>
+          <FadeIn delay={0.15}>
+            <p className="text-white/80 text-xl max-w-2xl leading-relaxed">
               Upshiftt was built right here on the Central Coast for the service
               businesses that keep our communities running.
             </p>

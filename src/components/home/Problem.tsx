@@ -11,7 +11,7 @@ const stats = [
 
 export default function Problem() {
   return (
-    <section className="relative bg-[#0A0A0A] py-28 md:py-40 overflow-hidden">
+    <section className="relative bg-[#0A0A0A] py-20 md:py-28 overflow-hidden">
       {/* Side accent */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-40 bg-gradient-to-b from-transparent via-[#4DD9C0] to-transparent" />
 

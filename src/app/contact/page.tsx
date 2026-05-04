@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AnimatedText from "@/components/AnimatedText";
+import HeroHeading from "@/components/HeroHeading";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
@@ -31,11 +31,11 @@ export default function ContactPage() {
               Contact
             </span>
           </FadeIn>
-          <h1 className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-7xl text-white leading-tight mb-6">
-            <AnimatedText text="Let's Talk." delay={0.1} />
-          </h1>
-          <FadeIn delay={0.3}>
-            <p className="text-white/55 text-xl max-w-xl leading-relaxed">
+          <HeroHeading className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-7xl text-white leading-tight mb-6">
+            Let&apos;s Talk.
+          </HeroHeading>
+          <FadeIn delay={0.15}>
+            <p className="text-white/80 text-xl max-w-xl leading-relaxed">
               Book a free 20-minute demo and we&apos;ll show you exactly what
               Upshiftt looks like for your business.
             </p>
