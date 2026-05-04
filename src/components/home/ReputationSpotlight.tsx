@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import AnimatedText from "@/components/AnimatedText";
@@ -35,104 +36,131 @@ export default function ReputationSpotlight() {
           </span>
         </FadeIn>
 
-        {/* Headline */}
-        <div className="max-w-3xl mb-8">
-          <h2 className="font-[family-name:var(--font-syne)] font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
-            <AnimatedText text="More Reviews." delay={0.05} />
-            <br />
-            <AnimatedText text="More Calls." delay={0.15} />
-            <br />
-            <AnimatedText text="More Jobs." delay={0.25} />
-          </h2>
-        </div>
+        {/* Two-column grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left column — content */}
+          <div>
+            {/* Headline */}
+            <div className="mb-8">
+              <h2 className="font-[family-name:var(--font-syne)] font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
+                <AnimatedText text="More Reviews." delay={0.05} />
+                <br />
+                <AnimatedText text="More Calls." delay={0.15} />
+                <br />
+                <AnimatedText text="More Jobs." delay={0.25} />
+              </h2>
+            </div>
 
-        {/* Body */}
-        <FadeIn delay={0.2} className="max-w-2xl mb-16">
-          <p className="text-white/60 text-lg leading-relaxed">
-            Every completed job triggers an automatic review request to your
-            customer. No chasing. No awkward asks. Just a steady stream of
-            5-star Google reviews building your reputation while you work.
-          </p>
-        </FadeIn>
+            {/* Body */}
+            <FadeIn delay={0.2} className="mb-12">
+              <p className="text-white/60 text-lg leading-relaxed">
+                Every completed job triggers an automatic review request to your
+                customer. No chasing. No awkward asks. Just a steady stream of
+                5-star Google reviews building your reputation while you work.
+              </p>
+            </FadeIn>
 
-        {/* Stats row */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden mb-16">
-          {stats.map((stat, i) => (
-            <FadeIn key={i} delay={0.1 * i}>
-              <div className="bg-[#111111] px-8 py-10 flex flex-col gap-3">
-                <span className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-6xl text-[#4DD9C0] leading-none">
-                  {stat.value}
-                </span>
-                <span className="text-white/45 text-sm leading-snug max-w-[180px]">
-                  {stat.label}
-                </span>
+            {/* Stats row */}
+            <div className="grid grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden mb-12">
+              {stats.map((stat, i) => (
+                <FadeIn key={i} delay={0.1 * i}>
+                  <div className="bg-[#111111] px-5 py-8 flex flex-col gap-2">
+                    <span className="font-[family-name:var(--font-syne)] font-bold text-4xl md:text-5xl text-[#4DD9C0] leading-none">
+                      {stat.value}
+                    </span>
+                    <span className="text-white/45 text-xs leading-snug">
+                      {stat.label}
+                    </span>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+
+            {/* Mock Google review widget */}
+            <FadeIn delay={0.2}>
+              <div>
+                {/* Stars row */}
+                <div className="flex items-center gap-2 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="#4DD9C0"
+                      stroke="none"
+                    >
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  ))}
+                  <span className="text-white/40 text-xs ml-1 font-[family-name:var(--font-syne)]">
+                    Google Review
+                  </span>
+                </div>
+
+                {/* Review card */}
+                <div className="bg-white/[0.04] border border-white/8 rounded-2xl p-7">
+                  <p className="text-white/75 text-base leading-relaxed mb-6 italic">
+                    &ldquo;Called at 8pm on a Friday and someone picked up
+                    immediately. Had a quote by morning. Absolutely
+                    recommend.&rdquo;
+                  </p>
+                  <div className="flex items-center gap-3 border-t border-white/5 pt-5">
+                    <div className="w-8 h-8 rounded-full bg-[#4DD9C0]/15 flex items-center justify-center shrink-0">
+                      <span className="text-[#4DD9C0] text-xs font-bold font-[family-name:var(--font-syne)]">
+                        M
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-white font-[family-name:var(--font-syne)] font-semibold text-sm">
+                        Mike R.
+                      </p>
+                      <p className="text-white/35 text-xs">Santa Cruz County</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="mt-8">
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center gap-2 text-[#4DD9C0] font-semibold text-sm hover:gap-3 transition-all duration-200 group"
+                  >
+                    See how it works
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="group-hover:translate-x-1 transition-transform duration-200"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </FadeIn>
-          ))}
-        </div>
-
-        {/* Mock Google review widget */}
-        <FadeIn delay={0.2}>
-          <div className="max-w-lg">
-            {/* Stars row */}
-            <div className="flex items-center gap-2 mb-4">
-              {[...Array(5)].map((_, i) => (
-                <svg
-                  key={i}
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="#4DD9C0"
-                  stroke="none"
-                >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-              ))}
-              <span className="text-white/40 text-xs ml-1 font-[family-name:var(--font-syne)]">Google Review</span>
-            </div>
-
-            {/* Review card */}
-            <div className="bg-white/[0.04] border border-white/8 rounded-2xl p-7">
-              <p className="text-white/75 text-base leading-relaxed mb-6 italic">
-                &ldquo;Called at 8pm on a Friday and someone picked up immediately.
-                Had a quote by morning. Absolutely recommend.&rdquo;
-              </p>
-              <div className="flex items-center gap-3 border-t border-white/5 pt-5">
-                <div className="w-8 h-8 rounded-full bg-[#4DD9C0]/15 flex items-center justify-center shrink-0">
-                  <span className="text-[#4DD9C0] text-xs font-bold font-[family-name:var(--font-syne)]">M</span>
-                </div>
-                <div>
-                  <p className="text-white font-[family-name:var(--font-syne)] font-semibold text-sm">Mike R.</p>
-                  <p className="text-white/35 text-xs">Santa Cruz County</p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="mt-8">
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-2 text-[#4DD9C0] font-semibold text-sm hover:gap-3 transition-all duration-200 group"
-              >
-                See how it works
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="group-hover:translate-x-1 transition-transform duration-200"
-                >
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </Link>
-            </div>
           </div>
-        </FadeIn>
+
+          {/* Right column — image card */}
+          <FadeIn delay={0.15} direction="left" className="relative min-h-[480px] lg:min-h-[600px]">
+            <div className="relative w-full h-full min-h-[480px] lg:min-h-[600px] rounded-2xl overflow-hidden border border-teal-500/20">
+              <Image
+                src="/local-scene.jpg"
+                alt="Local service businesses on the Central Coast"
+                fill
+                className="object-cover"
+                quality={85}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );

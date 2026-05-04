@@ -117,7 +117,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-[#0A0A0A] min-h-screen">
       {/* Hero */}
-      <section className="relative pt-40 pb-24 overflow-hidden" style={{ minHeight: "60vh" }}>
+      <section className="relative pt-40 pb-16 overflow-hidden" style={{ minHeight: "60vh" }}>
         <div className="absolute inset-0 pointer-events-none">
           <Image
             src="/services-bg.jpg"
