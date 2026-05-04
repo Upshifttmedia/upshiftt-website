@@ -154,6 +154,7 @@ export default function ReputationSpotlight() {
                 src="/reputation.jpg"
                 alt="Customer leaving a 5-star Google review"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
                 quality={85}
               />
