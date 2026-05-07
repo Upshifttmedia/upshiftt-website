@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 
@@ -18,31 +17,61 @@ export default function Hero() {
       ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0A0A]"
     >
-      {/* Parallax background */}
+      {/* Animated background layer */}
       <motion.div className="absolute inset-0 z-0" style={{ y }}>
-        <Image
-          src="/hero-bg.jpg"
-          alt="Upshiftt hero background"
-          fill
-          className="object-cover"
-          priority
-          quality={85}
+        {/* Radial teal glow — top center */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(77,217,192,0.12) 0%, transparent 70%)",
+          }}
         />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/60" />
-        {/* Teal glow on top of photo */}
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-[#4DD9C0]/8 blur-[120px]" />
-      </motion.div>
 
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 z-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#4DD9C0 1px, transparent 1px), linear-gradient(90deg, #4DD9C0 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
+        {/* SVG dot grid */}
+        <svg
+          className="absolute inset-0 w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern id="dot-grid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+              <circle cx="1" cy="1" r="1" fill="rgba(77,217,192,0.08)" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dot-grid)" />
+        </svg>
+
+        {/* Teal orb — top left */}
+        <motion.div
+          animate={{ x: [0, 20, 0], y: [0, -15, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "5%",
+            width: 600,
+            height: 600,
+            borderRadius: "50%",
+            background: "rgba(77,217,192,0.10)",
+            filter: "blur(120px)",
+          }}
+        />
+
+        {/* Purple orb — bottom right */}
+        <motion.div
+          animate={{ x: [0, -20, 0], y: [0, 15, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          style={{
+            position: "absolute",
+            bottom: "5%",
+            right: "5%",
+            width: 500,
+            height: 500,
+            borderRadius: "50%",
+            background: "rgba(99,102,241,0.08)",
+            filter: "blur(120px)",
+          }}
+        />
+      </motion.div>
 
       <motion.div
         style={{ opacity }}

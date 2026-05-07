@@ -165,7 +165,15 @@ export default function PricingPage() {
 
                   {/* CTA */}
                   <a
-                    href="#"
+                    href={
+                      plan.name === "Starter"
+                        ? "https://links.upshiftt.com/payment-link/69faadc3c43a7488828c12eb"
+                        : plan.name === "Growth"
+                        ? "https://links.upshiftt.com/payment-link/69faae55c43a7488828c12ec"
+                        : "https://links.upshiftt.com/payment-link/69faae681e136ab80a29feb5"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`w-full text-center py-3.5 rounded-full font-semibold text-sm transition-all duration-200 ${
                       plan.featured
                         ? "bg-[#4DD9C0] text-[#0A0A0A] hover:bg-white"
