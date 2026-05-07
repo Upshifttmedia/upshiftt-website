@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import AnimatedText from "@/components/AnimatedText";
@@ -67,11 +68,26 @@ export default function PricingPage() {
   return (
     <div className="bg-[#0A0A0A] min-h-screen">
       {/* ── Hero ── */}
-      <section className="relative pt-40 pb-20 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#4DD9C0]/5 blur-[120px]" />
-        </div>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="relative pt-40 pb-24 overflow-hidden min-h-[60vh] flex items-end">
+        {/* Background image */}
+        <Image
+          src="/local-scene.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+          quality={85}
+        />
+        {/* Layered overlays — dark base + teal tint top */}
+        <div className="absolute inset-0 bg-black/65" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(77,217,192,0.10) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">
           <FadeIn className="flex items-center gap-3 mb-8">
             <span className="w-8 h-px bg-[#4DD9C0]" />
             <span className="text-[#4DD9C0] text-xs font-semibold uppercase tracking-[0.2em] font-[family-name:var(--font-syne)]">

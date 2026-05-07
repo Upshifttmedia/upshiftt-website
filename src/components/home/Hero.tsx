@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 
@@ -19,6 +20,18 @@ export default function Hero() {
     >
       {/* Animated background layer */}
       <motion.div className="absolute inset-0 z-0" style={{ y }}>
+        {/* Base photo */}
+        <Image
+          src="/hero-bg.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+        />
+        {/* Dark overlay so animated layers and text stay legible */}
+        <div className="absolute inset-0 bg-black/60" />
+
         {/* Radial teal glow — top center */}
         <div
           className="absolute inset-0"
