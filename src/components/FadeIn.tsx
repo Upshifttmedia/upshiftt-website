@@ -19,7 +19,7 @@ export default function FadeIn({
   once = true,
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once, margin: "-5% 0px" });
+  const inView = useInView(ref, { once, margin: "-50px 0px" });
 
   const dirMap = {
     up: { y: 40 },

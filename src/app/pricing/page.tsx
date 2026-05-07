@@ -71,20 +71,20 @@ export default function PricingPage() {
       <section className="relative pt-40 pb-24 overflow-hidden min-h-[60vh] flex items-end">
         {/* Background image */}
         <Image
-          src="/local-scene.jpg"
+          src="/pricing.jpg"
           alt=""
           fill
           className="object-cover object-center"
           priority
           quality={85}
         />
-        {/* Layered overlays — dark base + teal tint top */}
-        <div className="absolute inset-0 bg-black/65" />
+        {/* Dark gradient overlay */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(77,217,192,0.10) 0%, transparent 70%)",
+              "linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(10,10,10,0.95) 100%)",
+            zIndex: 1,
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">

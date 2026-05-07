@@ -29,8 +29,15 @@ export default function Hero() {
           priority
           quality={85}
         />
-        {/* Dark overlay so animated layers and text stay legible */}
-        <div className="absolute inset-0 bg-black/60" />
+        {/* Dark gradient overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 50%, rgba(10,10,10,0.85) 100%)",
+            zIndex: 1,
+          }}
+        />
 
         {/* Radial teal glow — top center */}
         <div
@@ -95,7 +102,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
             className="flex items-center gap-3 mb-8"
           >
             <span className="w-8 h-px bg-[#4DD9C0]" />
@@ -115,7 +122,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.8 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.8 }}
             className="text-white/60 text-lg md:text-xl max-w-xl leading-relaxed mb-12"
           >
             Upshiftt keeps your business running 24/7 — so you never lose
@@ -126,7 +133,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.0 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 1.0 }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <a
@@ -151,7 +158,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.4 }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 1.4 }}
           className="absolute right-10 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4"
         >
           {[
@@ -163,7 +170,7 @@ export default function Hero() {
               key={i}
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 1.5 + i * 0.15 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 1.5 + i * 0.15 }}
               className="bg-white/5 border border-white/8 rounded-2xl px-6 py-4 text-right backdrop-blur-sm"
             >
               <div className="text-3xl font-[family-name:var(--font-syne)] font-bold text-[#4DD9C0]">

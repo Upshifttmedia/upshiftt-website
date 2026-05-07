@@ -17,7 +17,7 @@ export default function AnimatedText({
   once = true,
 }: AnimatedTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once, margin: "-10% 0px" });
+  const inView = useInView(ref, { once, margin: "-50px 0px" });
 
   const words = text.split(" ");
 
