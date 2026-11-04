@@ -22,9 +22,10 @@ export default function AnimatedText({
   const words = text.split(" ");
 
   return (
-    <span ref={ref} className={`inline ${className}`} aria-label={text}>
+    <span ref={ref} className={`inline ${className}`}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden mr-[0.25em]">
+        <span key={i} className="inline">
+        <span className="inline-block overflow-hidden">
           <motion.span
             className="inline-block"
             initial={{ y: "100%", opacity: 0 }}
@@ -37,6 +38,8 @@ export default function AnimatedText({
           >
             {word}
           </motion.span>
+        </span>
+        {i < words.length - 1 ? " " : null}
         </span>
       ))}
     </span>

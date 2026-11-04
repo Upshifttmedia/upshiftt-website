@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import HeroHeading from "@/components/HeroHeading";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
   title: "Services — One System. Total Coverage.",
   description:
-    "Every tool your business needs to capture, follow up, and grow — 24/7 call answering, SMS follow-up, owner alerts, web chat, review automation, and a lead dashboard.",
+    "A custom mobile-first website, a 24/7 AI chat assistant, instant lead alerts, estimate follow-up, Google review requests, and a lead dashboard for local service businesses.",
   openGraph: {
     title: "Upshiftt Services — One System. Total Coverage.",
     description:
-      "Everything you need to capture every lead, 24/7. No contracts. No tech headaches.",
+      "A new website and 24/7 AI assistant built to capture more leads. No contracts. No tech headaches.",
     url: "https://upshiftt.com/services",
   },
 };
@@ -21,97 +22,98 @@ const services = [
   {
     number: "01",
     color: "#4DD9C0",
-    title: "24/7 Call Answering",
+    title: "Custom Mobile-First Website",
     badge: "Core Service",
-    short: "Never miss a call again, day or night.",
+    short: "A modern website built to turn visitors into calls.",
     description:
-      "Your dedicated receptionist team answers every call — mornings, evenings, weekends, and holidays. Callers are greeted professionally, their needs are understood, and their contact info and job details are captured every time. No more voicemail. No more lost jobs.",
+      "Most customers find you on their phone. We build a fast, modern website around your services, your service area, and your real reviews — designed so a homeowner can call you or request a quote in seconds.",
     bullets: [
-      "Live answering 24 hours a day, 7 days a week",
-      "Professional receptionists trained for service businesses",
-      "Full call summary sent to you after every call",
-      "Custom greeting using your business name",
+      "Designed for your trade and your service area",
+      "Click-to-call and quote request form on every page",
+      "Fast and easy to use on phones",
+      "Hosting, updates, and edits handled for you",
     ],
   },
   {
     number: "02",
     color: "#60A5FA",
-    title: "Instant SMS Follow-Up",
-    badge: "Caller Experience",
-    short: "Every caller gets a text within seconds.",
+    title: "24/7 AI Chat Assistant",
+    badge: "AI Lead Capture",
+    short: "An AI assistant that answers your website visitors around the clock.",
     description:
-      "The moment a call ends, your caller automatically receives a confirmation text. They know you have their info and will be in touch. This one touch dramatically reduces the chance they call a competitor while waiting to hear back from you.",
+      "When someone visits your site at 9pm with a question, they shouldn't have to wait until morning. Your AI assistant is trained on your services and answers common questions, collects job details, and offers estimate times — then hands every lead to you. It's AI, and it's clearly labeled as an assistant, so customers know what to expect.",
     bullets: [
-      "Automated text sent within seconds of call end",
-      "Customizable message using your business name",
-      "Confirms caller details and next steps",
-      "Makes your business feel responsive and professional",
+      "Trained on your services, service area, and FAQs",
+      "Collects name, phone, address, and job details",
+      "Requests estimate appointments for you to confirm",
+      "Never quotes prices you haven't approved",
     ],
   },
   {
     number: "03",
     color: "#F59E0B",
-    title: "Owner Notifications",
+    title: "Instant Lead Alerts",
     badge: "Real-Time Alerts",
-    short: "Instant alerts to your phone and email.",
+    short: "New leads sent straight to you.",
     description:
-      "As soon as a call ends, you receive a detailed notification via text and email. You get the caller's name, number, what they need, and any urgency notes — so you can prioritize and follow up fast, even when you're on a job site.",
+      "Every chat lead and quote request is emailed to you right away with the customer's details and what they need — so you can follow up quickly, even from a job site.",
     bullets: [
-      "Text + email alert after every call",
-      "Full caller summary included",
-      "Urgent calls flagged for immediate follow-up",
-      "Works with any phone, no app required",
+      "Email alert for every new lead",
+      "Full customer details and job description",
+      "Urgent requests clearly flagged",
+      "Works on any phone, no app required",
     ],
   },
   {
     number: "04",
     color: "#A855F7",
-    title: "Website Chat Assistant",
-    badge: "Web Lead Capture",
-    short: "Capture leads from your site 24/7.",
+    title: "Estimate Follow-Up",
+    badge: "Win More Jobs",
+    short: "Fewer estimates slipping through the cracks.",
     description:
-      "Not every potential customer will call — some will visit your website first. Your chat assistant answers common questions, qualifies visitors, and captures their contact info around the clock. Every web lead flows into your dashboard automatically.",
+      "Lots of jobs are lost simply because nobody followed up after the estimate. Customers who received an estimate but haven't booked get friendly, timed follow-up messages, so you stay top of mind without chasing anyone yourself.",
     bullets: [
-      "Smart chat widget on your website",
-      "Answers FAQs and captures contact info",
-      "Available 24/7 — never goes offline",
-      "Leads sent to you instantly",
+      "Timed follow-ups after each estimate",
+      "Written in your voice with your business name",
+      "Stops automatically once the job is booked",
+      "Included in the Growth plan",
     ],
   },
   {
     number: "05",
     color: "#4ADE80",
-    title: "Google Review Automation",
+    title: "Google Review Requests",
     badge: "Reputation Builder",
-    short: "Build your reputation on autopilot.",
+    short: "Make it easy for happy customers to leave a review.",
     description:
-      "After every completed job, an automated follow-up message goes out asking the customer to leave a Google review. Most businesses see a 3–5x increase in review volume within the first 60 days — without lifting a finger.",
+      "After a job is marked complete, your customer gets a short, friendly message with a direct link to your Google listing. Asking consistently is the simplest way to grow your reviews.",
     bullets: [
-      "Automated review request after every job",
+      "Review request after every completed job",
       "Direct link to your Google Business listing",
-      "Dramatically increases review volume",
-      "Builds trust with new potential customers",
+      "Personalized with your business name",
+      "Included in the Growth plan",
     ],
     spotlight: true,
     extra:
-      "Most businesses never ask for reviews — and the ones that do, forget. Upshiftt sends a perfectly timed, personalized message after every completed job. Your Google rating climbs every month without any extra effort on your part. More reviews means higher placement in Google search results, which means more calls, which means more jobs.",
+      "Many great local businesses have only a handful of reviews simply because asking is easy to forget. A consistent, well-timed request after every job helps your reputation keep pace with the quality of your work.",
   },
   {
     number: "06",
     color: "#F87171",
     title: "Lead Dashboard",
     badge: "Organized Leads",
-    short: "Every lead logged and organized in one place.",
+    short: "Every lead organized in one place.",
     description:
-      "Every call, chat, and web lead flows into a single, clean dashboard. See exactly who called, when, what they needed, and what happened next. No more lost sticky notes, no more forgotten callbacks. Everything in one place.",
+      "Every chat, quote request, and booked estimate flows into one simple dashboard. See who reached out, what they needed, and what happens next — no more lost sticky notes.",
     bullets: [
-      "Unified view of all leads and contacts",
-      "Call notes and summaries automatically logged",
-      "Simple follow-up status tracking",
+      "All leads and estimate requests in one view",
+      "Simple status tracking from new to booked",
+      "Chat conversations saved automatically",
       "Accessible from your phone or desktop",
     ],
   },
 ];
+
 
 export default function ServicesPage() {
   return (
@@ -121,7 +123,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 pointer-events-none">
           <Image
             src="/services-bg.jpg"
-            alt="Services background"
+            alt=""
             fill
             className="object-cover opacity-30"
             priority
@@ -222,21 +224,41 @@ export default function ServicesPage() {
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-10 text-center">
           <FadeIn>
+            <div className="bg-white/[0.03] border border-dashed border-white/15 rounded-2xl p-7 mb-16 text-left">
+              <p className="text-[#4DD9C0] text-xs uppercase tracking-widest font-semibold font-[family-name:var(--font-syne)] mb-2">
+                Coming Soon
+              </p>
+              <p className="font-[family-name:var(--font-syne)] font-bold text-white text-xl mb-2">
+                24/7 AI Phone Answering
+              </p>
+              <p className="text-white/55 text-sm leading-relaxed">
+                An AI voice assistant that answers your business line when you
+                can&apos;t. Ask about early access when you book your demo.
+              </p>
+            </div>
             <h2 className="font-[family-name:var(--font-syne)] font-bold text-4xl md:text-5xl text-white mb-6">
               Simple, Transparent Pricing
             </h2>
             <p className="text-white/50 text-lg leading-relaxed mb-10">
-              One flat monthly fee. No contracts. No setup surprises. Reach out
-              to get a quote built around your business.
+              Plans start at $297/month with your new website included. No
+              contracts. Cancel anytime.
             </p>
-            <a
-              href={CALENDLY}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-10 py-5 bg-[#4DD9C0] text-[#0A0A0A] font-bold text-lg rounded-full hover:bg-white transition-all duration-300 hover:scale-[1.02]"
-            >
-              Get Your Custom Quote
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/pricing"
+                className="inline-flex items-center justify-center px-10 py-5 bg-[#4DD9C0] text-[#0A0A0A] font-bold text-lg rounded-full hover:bg-white transition-all duration-300 hover:scale-[1.02]"
+              >
+                See Pricing
+              </Link>
+              <a
+                href={CALENDLY}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-10 py-5 border border-white/15 text-white font-semibold text-lg rounded-full hover:border-white/40 hover:bg-white/5 transition-all duration-300"
+              >
+                Book a Free Demo
+              </a>
+            </div>
           </FadeIn>
         </div>
       </section>

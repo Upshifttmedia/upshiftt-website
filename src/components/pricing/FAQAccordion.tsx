@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: "How quickly can I get set up?",
-    a: "Most clients are fully live within 48–72 hours of signing up. Joel calls you personally within 24 hours to kick things off.",
+    a: "Most new websites and AI assistants are live within 1–2 weeks. Joel reaches out personally within 24 hours to kick things off.",
   },
   {
     q: "What if I want to change plans?",
@@ -19,6 +19,14 @@ const faqs = [
   {
     q: "Do I need any technical knowledge?",
     a: "None at all. We handle everything — setup, configuration, and ongoing management. You just run your business.",
+  },
+  {
+    q: "Is the chat assistant a real person?",
+    a: "No — it's an AI assistant trained on your business. It answers common questions, collects job details, and requests estimate times. Every lead and booking request comes to you to confirm.",
+  },
+  {
+    q: "What if I already have a website?",
+    a: "We'll take a look on your demo call. Most clients get a new site built around their services, but we can also discuss adding the AI assistant to what you have.",
   },
 ];
 

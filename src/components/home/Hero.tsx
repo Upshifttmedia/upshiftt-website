@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 
 const CALENDLY = "https://calendly.com/joel-upshiftt/30min";
+const DEMO_SITE = "https://redwood-ridge-care.base44.app";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -23,7 +24,7 @@ export default function Hero() {
         {/* Base photo */}
         <Image
           src="/hero-bg.jpg"
-          alt=""
+          alt="Local service professional at work"
           fill
           className="object-cover"
           priority
@@ -107,15 +108,15 @@ export default function Hero() {
           >
             <span className="w-8 h-px bg-[#4DD9C0]" />
             <span className="text-[#4DD9C0] text-xs font-semibold uppercase tracking-[0.2em] font-[family-name:var(--font-syne)]">
-              24/7 Receptionist & Automation
+              Websites + 24/7 AI Assistant
             </span>
           </motion.div>
 
           {/* Headline */}
           <h1 className="font-[family-name:var(--font-syne)] font-bold text-5xl md:text-7xl lg:text-[88px] leading-[1.0] tracking-tight text-white mb-8">
-            <AnimatedText text="Every Call Answered." delay={0.2} />
+            <AnimatedText text="A Website That" delay={0.2} />
             <br />
-            <AnimatedText text="Every Lead Captured." delay={0.4} />
+            <AnimatedText text="Books Jobs While You Work." delay={0.4} />
           </h1>
 
           {/* Subheadline */}
@@ -125,8 +126,9 @@ export default function Hero() {
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.8 }}
             className="text-white/60 text-lg md:text-xl max-w-xl leading-relaxed mb-12"
           >
-            Upshiftt keeps your business running 24/7 — so you never lose
-            another job to voicemail.
+            Upshiftt builds modern websites for Santa Cruz County service
+            businesses — with a 24/7 AI assistant that answers customers,
+            captures leads, and books estimates while you&apos;re on the job.
           </motion.p>
 
           {/* CTAs */}
@@ -145,11 +147,13 @@ export default function Hero() {
               Book a Free Demo
             </a>
             <a
-              href="tel:+18313182960"
+              href={DEMO_SITE}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/15 text-white font-medium text-base rounded-full hover:border-white/40 hover:bg-white/5 transition-all duration-300"
             >
               <span className="w-2 h-2 rounded-full bg-[#4DD9C0] animate-pulse" />
-              Hear It Live
+              See a Demo Site
             </a>
           </motion.div>
         </div>
@@ -162,9 +166,9 @@ export default function Hero() {
           className="absolute right-10 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4"
         >
           {[
-            { value: "24/7", label: "Always On" },
-            { value: "< 3s", label: "Answer Time" },
-            { value: "100%", label: "Lead Capture" },
+            { value: "24/7", label: "AI Assistant" },
+            { value: "Mobile", label: "First Websites" },
+            { value: "Local", label: "Scotts Valley Based" },
           ].map((stat, i) => (
             <motion.div
               key={i}

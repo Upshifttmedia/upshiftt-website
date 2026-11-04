@@ -7,16 +7,16 @@ import AnimatedText from "@/components/AnimatedText";
 
 const stats = [
   {
-    value: "3x",
-    label: "more calls for businesses with 50+ Google reviews",
+    value: "1",
+    label: "job marked complete",
   },
   {
-    value: "72%",
-    label: "of customers check Google reviews before calling",
+    value: "1",
+    label: "friendly message with your Google review link",
   },
   {
-    value: "Auto",
-    label: "every review request sent without you lifting a finger",
+    value: "0",
+    label: "awkward asks or chasing customers",
   },
 ];
 
@@ -54,9 +54,10 @@ export default function ReputationSpotlight() {
             {/* Body */}
             <FadeIn delay={0.2} className="mb-12">
               <p className="text-white/60 text-lg leading-relaxed">
-                Every completed job triggers an automatic review request to your
-                customer. No chasing. No awkward asks. Just a steady stream of
-                5-star Google reviews building your reputation while you work.
+                Reviews are one of the first things customers check before they
+                call. After each completed job, your customer gets a short,
+                friendly message with a direct link to your Google listing — so
+                happy customers actually leave the review.
               </p>
             </FadeIn>
 
@@ -79,45 +80,19 @@ export default function ReputationSpotlight() {
             {/* Mock Google review widget */}
             <FadeIn delay={0.2}>
               <div>
-                {/* Stars row */}
-                <div className="flex items-center gap-2 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="#4DD9C0"
-                      stroke="none"
-                    >
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                    </svg>
-                  ))}
-                  <span className="text-white/40 text-xs ml-1 font-[family-name:var(--font-syne)]">
-                    Google Review
-                  </span>
-                </div>
-
-                {/* Review card */}
+                {/* Sample review request message */}
+                <p className="text-white/40 text-xs uppercase tracking-widest mb-4 font-[family-name:var(--font-syne)]">
+                  Example message
+                </p>
                 <div className="bg-white/[0.04] border border-white/8 rounded-2xl p-7">
-                  <p className="text-white/75 text-base leading-relaxed mb-6 italic">
-                    &ldquo;Called at 8pm on a Friday and someone picked up
-                    immediately. Had a quote by morning. Absolutely
-                    recommend.&rdquo;
+                  <p className="text-white/75 text-base leading-relaxed">
+                    Hi Sarah, thanks for choosing Redwood Ridge Tree Care today!
+                    If you were happy with the work, would you mind leaving us a
+                    quick Google review? It really helps a small local business.
                   </p>
-                  <div className="flex items-center gap-3 border-t border-white/5 pt-5">
-                    <div className="w-8 h-8 rounded-full bg-[#4DD9C0]/15 flex items-center justify-center shrink-0">
-                      <span className="text-[#4DD9C0] text-xs font-bold font-[family-name:var(--font-syne)]">
-                        M
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-white font-[family-name:var(--font-syne)] font-semibold text-sm">
-                        Mike R.
-                      </p>
-                      <p className="text-white/35 text-xs">Santa Cruz County</p>
-                    </div>
-                  </div>
+                  <p className="text-[#4DD9C0] text-sm mt-4 font-semibold">
+                    ★ Leave a review →
+                  </p>
                 </div>
 
                 {/* CTA */}

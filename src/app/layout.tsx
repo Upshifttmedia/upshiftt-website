@@ -18,17 +18,18 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Upshiftt — 24/7 Answering & Automation for Local Service Businesses",
+    default: "Upshiftt — Websites & 24/7 AI Assistants for Local Service Businesses",
     template: "%s | Upshiftt",
   },
   description:
-    "Upshiftt keeps your business running 24/7 with live call answering, instant SMS follow-up, and automated lead capture — so you never lose another job to voicemail.",
+    "Upshiftt builds modern websites with a 24/7 AI assistant for local service businesses in Santa Cruz County — capturing leads and booking estimates while you work.",
   keywords: [
-    "answering service",
-    "business automation",
-    "local service business",
-    "plumber answering service",
+    "website design for contractors",
+    "AI chat assistant",
+    "local service business websites",
+    "tree service website",
     "contractor lead capture",
+    "Santa Cruz County",
     "Scotts Valley",
     "Central Coast",
   ],
@@ -37,14 +38,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://upshiftt.com",
     siteName: "Upshiftt",
-    title: "Upshiftt — 24/7 Answering & Automation for Local Service Businesses",
+    title: "Upshiftt — Websites & 24/7 AI Assistants for Local Service Businesses",
     description:
-      "Never miss a call. Never lose a lead. Upshiftt keeps your business running 24/7.",
+      "A website that books jobs while you work. Built in Scotts Valley for local service businesses.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Upshiftt — 24/7 Answering & Automation",
-    description: "Never miss a call. Never lose a lead.",
+    title: "Upshiftt — Websites & 24/7 AI Assistants",
+    description: "A website that books jobs while you work.",
   },
 };
 

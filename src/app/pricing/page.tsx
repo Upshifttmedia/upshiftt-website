@@ -7,9 +7,9 @@ import ROICalculator from "@/components/pricing/ROICalculator";
 import FAQAccordion from "@/components/pricing/FAQAccordion";
 
 export const metadata: Metadata = {
-  title: "Pricing | Upshiftt",
+  title: "Pricing",
   description:
-    "Simple flat-rate pricing for local service businesses. See how much missed calls are costing you with our free ROI calculator.",
+    "Simple monthly pricing for local service businesses — a new website and 24/7 AI assistant included. See what missed leads may be costing you with our free calculator.",
   openGraph: {
     title: "Pricing | Upshiftt",
     description:
@@ -26,13 +26,13 @@ const plans = [
     price: "$297",
     featured: false,
     included: [
-      "24/7 call answering",
-      "Instant SMS follow-up",
-      "Owner notifications (SMS + email)",
-      "Website chat assistant",
+      "New custom website (setup fee waived for founding clients)",
+      "Hosting, updates & edits",
+      "24/7 AI chat assistant",
+      "Instant lead alerts",
       "Lead dashboard",
     ],
-    excluded: ["Google review automation", "Website build"],
+    excluded: ["Estimate follow-up", "Google review requests"],
   },
   {
     name: "Growth",
@@ -41,28 +41,15 @@ const plans = [
     badge: "Most Popular",
     included: [
       "Everything in Starter",
-      "Google review automation",
+      "Automatic estimate follow-up",
+      "Google review requests",
       "Monthly lead report",
-      "5-page website included",
       "Priority support",
-    ],
-    excluded: ["Custom website build", "Quarterly strategy call"],
-  },
-  {
-    name: "Pro",
-    price: "$797",
-    featured: false,
-    included: [
-      "Everything in Growth",
-      "Custom website build",
-      "Pipeline management",
-      "Quarterly strategy call",
-      "White-glove onboarding",
-      "Dedicated account manager",
     ],
     excluded: [],
   },
 ];
+
 
 export default function PricingPage() {
   return (
@@ -73,6 +60,7 @@ export default function PricingPage() {
         <Image
           src="/pricing.jpg"
           alt=""
+          aria-hidden="true"
           fill
           className="object-cover object-center"
           priority
@@ -101,8 +89,8 @@ export default function PricingPage() {
           </h1>
           <FadeIn delay={0.35}>
             <p className="text-white/60 text-xl max-w-xl leading-relaxed">
-              One flat monthly fee. No contracts. No setup surprises. Cancel
-              anytime.
+              Your new website and 24/7 AI assistant in one monthly plan. No
+              contracts. Cancel anytime.
             </p>
           </FadeIn>
         </div>
@@ -181,13 +169,7 @@ export default function PricingPage() {
 
                   {/* CTA */}
                   <a
-                    href={
-                      plan.name === "Starter"
-                        ? "https://links.upshiftt.com/payment-link/69faadc3c43a7488828c12eb"
-                        : plan.name === "Growth"
-                        ? "https://links.upshiftt.com/payment-link/69faae55c43a7488828c12ec"
-                        : "https://links.upshiftt.com/payment-link/69faae681e136ab80a29feb5"
-                    }
+                    href={CALENDLY}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`w-full text-center py-3.5 rounded-full font-semibold text-sm transition-all duration-200 ${
@@ -196,16 +178,37 @@ export default function PricingPage() {
                         : "border border-white/15 text-white hover:border-white/40 hover:bg-white/5"
                     }`}
                   >
-                    Get Started
+                    Book a Free Demo
                   </a>
                 </div>
               </FadeIn>
             ))}
+            <FadeIn delay={0.2}>
+              <div className="relative flex flex-col rounded-2xl p-8 h-full bg-white/[0.02] border border-dashed border-white/15">
+                <p className="text-[#4DD9C0] text-xs uppercase tracking-[0.2em] font-[family-name:var(--font-syne)] mb-3">
+                  Coming Soon
+                </p>
+                <p className="font-[family-name:var(--font-syne)] font-bold text-2xl text-white mb-4">
+                  24/7 AI Phone Answering
+                </p>
+                <p className="text-white/55 text-sm leading-relaxed mb-8 flex-1">
+                  An AI voice assistant that answers your business line when
+                  you&apos;re on a job, captures the caller&apos;s details, and
+                  sends them to you. Available as an add-on soon.
+                </p>
+                <Link
+                  href="/contact"
+                  className="w-full text-center py-3.5 rounded-full font-semibold text-sm border border-white/15 text-white hover:border-white/40 hover:bg-white/5 transition-all duration-200"
+                >
+                  Ask About Early Access
+                </Link>
+              </div>
+            </FadeIn>
           </div>
 
           <FadeIn delay={0.3}>
             <p className="text-center text-white/30 text-sm mt-8">
-              All plans are month-to-month. No setup fees. No cancellation fees.{" "}
+              All plans are month-to-month. No cancellation fees.{" "}
               <Link href="/contact" className="text-[#4DD9C0] hover:underline">
                 Need something custom?
               </Link>
@@ -231,12 +234,12 @@ export default function PricingPage() {
             <span className="w-8 h-px bg-[#4DD9C0]" />
           </FadeIn>
           <h2 className="font-[family-name:var(--font-syne)] font-bold text-4xl md:text-5xl text-white leading-tight mb-6">
-            <AnimatedText text="Ready to Stop Missing Leads?" delay={0.1} />
+            <AnimatedText text="Ready to Win More Jobs?" delay={0.1} />
           </h2>
           <FadeIn delay={0.25}>
             <p className="text-white/55 text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto">
-              Book a free 20-minute demo. We&apos;ll show you exactly how
-              Upshiftt works for your business.
+              Book a free 20-minute demo. We&apos;ll show you a new website and
+              AI assistant built around your business.
             </p>
           </FadeIn>
           <FadeIn delay={0.35}>
@@ -250,12 +253,14 @@ export default function PricingPage() {
                 Book Your Free Demo
               </a>
               <p className="text-white/35 text-sm">
-                Or call the live demo line:{" "}
+                Or{" "}
                 <a
-                  href="tel:+18313182960"
-                  className="text-white/60 hover:text-white transition-colors"
+                  href="https://redwood-ridge-care.base44.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white underline underline-offset-4 transition-colors"
                 >
-                  (831) 318-2960
+                  see a live demo site
                 </a>
               </p>
             </div>

@@ -8,13 +8,13 @@ import SocialProof from "@/components/home/SocialProof";
 import HomeCTA from "@/components/home/HomeCTA";
 
 export const metadata: Metadata = {
-  title: "Upshiftt — 24/7 Answering & Automation for Local Service Businesses",
+  title: { absolute: "Upshiftt — Websites & 24/7 AI Assistants for Local Service Businesses" },
   description:
-    "Upshiftt keeps your business running 24/7 — live call answering, instant SMS follow-up, and automated lead capture so you never lose another job to voicemail.",
+    "Upshiftt builds modern websites with a 24/7 AI assistant for Santa Cruz County service businesses — answering customers, capturing leads, and booking estimates while you work.",
   openGraph: {
-    title: "Upshiftt — 24/7 Answering & Automation for Local Service Businesses",
+    title: "Upshiftt — Websites & 24/7 AI Assistants for Local Service Businesses",
     description:
-      "Never miss a call. Never lose a lead. Upshiftt keeps your business running 24/7.",
+      "A website that books jobs while you work. Built in Scotts Valley for local service businesses.",
     url: "https://upshiftt.com",
   },
 };

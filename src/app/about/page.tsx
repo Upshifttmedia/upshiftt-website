@@ -26,7 +26,7 @@ const values = [
   {
     title: "Simple by Design",
     description:
-      "No complicated dashboards. No tech headaches. No onboarding calls that take three hours. Upshiftt just works — from day one.",
+      "No complicated dashboards. No tech headaches. No onboarding calls that take three hours. We build it, set it up, and manage it for you.",
     color: "#60A5FA",
   },
   {
@@ -98,7 +98,7 @@ export default function AboutPage() {
                   gone.
                 </p>
                 <p>
-                  We built a system that fixes that. Permanently. Based in Scotts
+                  We built a system that helps fix that. Based in Scotts
                   Valley, CA, we work exclusively with local service businesses
                   who want a real competitive edge without the complexity.
                 </p>

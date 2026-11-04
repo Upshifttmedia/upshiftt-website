@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HeroHeading from "@/components/HeroHeading";
 import FadeIn from "@/components/FadeIn";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact — Let's Talk.",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Upshiftt — Let's Talk.",
     description:
-      "Book a free demo or call our live demo line at (831) 318-2960.",
+      "Book a free demo or send us a message. Based in Scotts Valley, CA.",
     url: "https://upshiftt.com/contact",
   },
 };
@@ -71,6 +72,12 @@ export default function ContactPage() {
                 Free · No obligation · 20 minutes
               </p>
             </div>
+            <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 md:p-10 mt-8">
+              <h2 className="font-[family-name:var(--font-syne)] font-bold text-2xl text-white mb-6">
+                Send a Message
+              </h2>
+              <ContactForm />
+            </div>
           </FadeIn>
 
           {/* Right: Contact details */}
@@ -85,10 +92,10 @@ export default function ContactPage() {
               {[
                 {
                   icon: "📞",
-                  label: "Live Demo Line",
-                  value: "(831) 318-2960",
-                  href: "tel:+18313182960",
-                  note: "You'll hear our receptionist answer — this is the live system.",
+                  label: "Office",
+                  value: "(831) 425-9125",
+                  href: "tel:+18314259125",
+                  note: "Leave a message and Joel will call you back.",
                 },
                 {
                   icon: "✉️",

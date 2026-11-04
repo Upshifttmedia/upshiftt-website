@@ -58,33 +58,33 @@ function IconDashboard() {
 const features = [
   {
     Icon: IconPhone,
-    title: "24/7 Call Answering",
-    description: "Never miss a call again, day or night. Every call answered by a live, professional receptionist.",
-  },
-  {
-    Icon: IconMessage,
-    title: "Instant SMS Follow-Up",
-    description: "Every caller gets a text within seconds of hanging up — so they know you've got them covered.",
-  },
-  {
-    Icon: IconBell,
-    title: "Owner Notifications",
-    description: "Real-time alerts to your phone and email with caller details so you can follow up fast.",
+    title: "Custom Mobile-First Website",
+    description: "A modern site built for your trade and service area — fast on phones, with click-to-call and a quote form front and center.",
   },
   {
     Icon: IconChat,
-    title: "Website Chat Assistant",
-    description: "Capture leads from your site 24/7 with a smart chat assistant that never sleeps.",
+    title: "24/7 AI Chat Assistant",
+    description: "An AI assistant on your site that answers questions, collects job details, and requests estimate times around the clock.",
+  },
+  {
+    Icon: IconBell,
+    title: "Instant Lead Alerts",
+    description: "New leads and estimate requests sent straight to your email so you can follow up fast.",
+  },
+  {
+    Icon: IconMessage,
+    title: "Estimate Follow-Up",
+    description: "Automatic, friendly follow-ups to customers who got an estimate but haven't booked yet.",
   },
   {
     Icon: IconStar,
-    title: "Google Review Automation",
-    description: "Build your reputation on autopilot — automated review requests after every completed job.",
+    title: "Google Review Requests",
+    description: "A review request with a direct link to your Google listing after every completed job.",
   },
   {
     Icon: IconDashboard,
     title: "Lead Dashboard",
-    description: "Every lead logged and organized in one place. Nothing falls through the cracks.",
+    description: "Every lead and booked estimate organized in one place, on your phone or desktop.",
   },
 ];
 

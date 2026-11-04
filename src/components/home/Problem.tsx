@@ -3,10 +3,10 @@
 import FadeIn from "@/components/FadeIn";
 import AnimatedText from "@/components/AnimatedText";
 
-const stats = [
-  { value: "62%", label: "of callers won't leave a voicemail" },
-  { value: "85%", label: "of missed calls never call back" },
-  { value: "$30K+", label: "in lost revenue per year from 1 missed call/day" },
+const points = [
+  { value: "01", label: "An outdated website that's hard to use on a phone sends customers to the next company" },
+  { value: "02", label: "Questions that come in after hours go unanswered until morning — or never" },
+  { value: "03", label: "Estimates that never get a follow-up quietly turn into lost jobs" },
 ];
 
 export default function Problem() {
@@ -30,22 +30,23 @@ export default function Problem() {
           {/* Left: headline + body */}
           <div>
             <h2 className="font-[family-name:var(--font-syne)] font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-8">
-              <AnimatedText text="Most calls go to voicemail." delay={0.1} />
+              <AnimatedText text="Your customers are online." delay={0.1} />
               <br />
-              <AnimatedText text="Most voicemails go unreturned." delay={0.2} />
+              <AnimatedText text="Is your business keeping up?" delay={0.2} />
             </h2>
             <FadeIn delay={0.3}>
               <p className="text-white/55 text-lg leading-relaxed">
-                Local service businesses miss up to 50% of their inbound calls.
-                Every missed call is a missed job. Your competitor picks up —
-                you don&apos;t. That job is gone.
+                Most local businesses lose leads to slow responses, outdated
+                websites, and missed messages. While you&apos;re on a job, your
+                customers are comparing you to the next company on Google — and
+                the first one to respond usually wins the work.
               </p>
             </FadeIn>
           </div>
 
           {/* Right: stat callouts */}
           <div className="flex flex-col gap-6 lg:pt-4">
-            {stats.map((stat, i) => (
+            {points.map((stat, i) => (
               <FadeIn key={i} delay={0.15 * i} direction="left">
                 <div className="flex gap-6 items-start border-b border-white/5 pb-6">
                   <span className="font-[family-name:var(--font-syne)] font-bold text-4xl md:text-5xl text-[#4DD9C0] tabular-nums shrink-0 leading-none">

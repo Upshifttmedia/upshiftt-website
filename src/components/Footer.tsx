@@ -12,7 +12,7 @@ export default function Footer() {
               <Image src="/logo.png" alt="Upshiftt" width={140} height={40} className="h-8 w-auto" />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              24/7 call answering and automation for local service businesses on
+              Websites and 24/7 AI assistants for local service businesses on
               the Central Coast.
             </p>
           </div>
@@ -25,6 +25,7 @@ export default function Footer() {
             <nav className="flex flex-col gap-2">
               {[
                 { label: "Services", href: "/services" },
+                { label: "Pricing", href: "/pricing" },
                 { label: "About", href: "/about" },
                 { label: "Contact", href: "/contact" },
                 { label: "Privacy Policy", href: "/privacy" },
@@ -57,7 +58,7 @@ export default function Footer() {
                 href="tel:+18314259125"
                 className="hover:text-white transition-colors"
               >
-                (831) 425-9125
+                Office: (831) 425-9125
               </a>
               <span>Scotts Valley, CA 95066</span>
             </div>
@@ -79,14 +80,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Chat Widget */}
-      <script
-        src="https://widgets.leadconnectorhq.com/loader.js"
-        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-        data-widget-id="69efe370af0133639a9f10a2"
-        data-source="WEB_USER"
-        async
-      />
     </footer>
   );
 }

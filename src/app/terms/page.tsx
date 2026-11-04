@@ -40,9 +40,10 @@ export default function TermsPage() {
                 Services
               </h2>
               <p className="leading-relaxed">
-                Upshiftt provides 24/7 live call answering, SMS follow-up,
-                owner notifications, website chat, Google review automation,
-                and lead management services for local service businesses.
+                Upshiftt provides website design and hosting, an AI website
+                chat assistant, lead notifications, estimate follow-up, Google
+                review requests, and lead management services for local
+                service businesses.
                 Service specifics are defined in individual client agreements.
                 We reserve the right to modify, suspend, or discontinue any
                 part of our services at any time with reasonable notice.

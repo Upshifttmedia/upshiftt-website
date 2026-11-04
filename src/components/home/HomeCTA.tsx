@@ -25,13 +25,13 @@ export default function HomeCTA() {
         </FadeIn>
 
         <h2 className="font-[family-name:var(--font-syne)] font-bold text-4xl md:text-6xl text-white leading-tight mb-6">
-          <AnimatedText text="Ready to Stop Missing Leads?" delay={0.1} />
+          <AnimatedText text="Ready for a Website That Works as Hard as You Do?" delay={0.1} />
         </h2>
 
         <FadeIn delay={0.3}>
           <p className="text-white/55 text-lg md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
-            Book a free 20-minute demo. We&apos;ll show you exactly how Upshiftt works
-            and what it would look like for your business.
+            Book a free 20-minute demo. We&apos;ll show you a new website and AI
+            assistant built around your business.
           </p>
         </FadeIn>
 
@@ -46,12 +46,14 @@ export default function HomeCTA() {
               Book Your Free Demo
             </a>
             <p className="text-white/35 text-sm">
-              Or call the live demo line:{" "}
+              Or{" "}
               <a
-                href="tel:+18313182960"
-                className="text-white/60 hover:text-white transition-colors"
+                href="https://redwood-ridge-care.base44.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-white underline underline-offset-4 transition-colors"
               >
-                (831) 318-2960
+                see a live demo site
               </a>
             </p>
           </div>

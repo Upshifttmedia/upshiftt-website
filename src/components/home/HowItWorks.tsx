@@ -6,45 +6,45 @@ import AnimatedText from "@/components/AnimatedText";
 const steps = [
   {
     color: "#4DD9C0",
-    label: "Someone calls your number",
-    badge: "24/7",
+    label: "We build your new website",
+    badge: "Website",
     description:
-      "Day or night, every call gets answered instantly. No voicemail. No missed opportunities.",
+      "A fast, modern, mobile-first site built around your services, your service area, and your real reviews — with click-to-call and a quote form on every page.",
   },
   {
     color: "#60A5FA",
-    label: "Your receptionist answers",
-    badge: "Live Voice",
+    label: "Your AI assistant answers visitors 24/7",
+    badge: "AI Chat",
     description:
-      "A warm, professional receptionist greets the caller, understands their need, and captures their name, number, and job details.",
+      "Day or night, an AI chat assistant answers common questions, collects job details, and offers estimate times — so after-hours visitors don't leave for a competitor.",
   },
   {
     color: "#F59E0B",
-    label: "Caller gets a follow-up text",
-    badge: "Instant SMS",
+    label: "Leads come straight to you",
+    badge: "Instant Alerts",
     description:
-      "The caller receives a confirmation text before they hang up — so they feel taken care of immediately.",
+      "Every new lead and estimate request lands in your inbox right away, with the customer's name, number, and what they need.",
   },
   {
     color: "#A855F7",
-    label: "You get notified instantly",
-    badge: "Owner Alert",
+    label: "Everything in one dashboard",
+    badge: "Lead Dashboard",
     description:
-      "You receive a text and email with the caller's name, number, and what they need — while you're still on the job.",
+      "See every lead, booked estimate, and follow-up in one simple place — from your phone or your desk.",
   },
   {
     color: "#F87171",
-    label: "Your website captures visitors too",
-    badge: "Web Chat",
+    label: "Estimates get followed up automatically",
+    badge: "Follow-Up",
     description:
-      "A smart chat assistant answers questions and captures contact info from every website visitor around the clock.",
+      "Customers who got an estimate but haven't booked get friendly, timed follow-up messages — so fewer jobs slip through the cracks.",
   },
   {
     color: "#4ADE80",
-    label: "Reviews build automatically",
-    badge: "Auto Review",
+    label: "Reviews build after every job",
+    badge: "Reviews",
     description:
-      "After every completed job, an automated message asks for a Google review — building your reputation without any extra effort.",
+      "After a job is marked complete, your customer gets a message with a direct link to leave a Google review.",
   },
 ];
 

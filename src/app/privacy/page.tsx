@@ -51,7 +51,7 @@ export default function PrivacyPage() {
                   "Contact information: name, phone number, and email address provided when booking a demo or contacting us.",
                   "Business information: your business name, type of service, and general location.",
                   "Usage data: pages visited, time on site, and browser type, collected via standard analytics tools.",
-                  "Call and SMS data: information collected through our receptionist and messaging services on behalf of our clients.",
+                  "Lead and messaging data: information collected through our website chat assistant, forms, and messaging services on behalf of our clients.",
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 items-start">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#4DD9C0] mt-2 shrink-0" />
