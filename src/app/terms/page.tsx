@@ -154,7 +154,7 @@ export default function TermsPage() {
                     joel@upshiftt.com
                   </a>
                 </p>
-                <p>(831) 425-9125</p>
+                <p>(209) 765-3518</p>
               </div>
             </section>
           </div>

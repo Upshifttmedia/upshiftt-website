@@ -33,7 +33,7 @@ export default function PrivacyPage() {
                 <a href="mailto:joel@upshiftt.com" className="text-[#4DD9C0] hover:underline">
                   joel@upshiftt.com
                 </a>{" "}
-                or by phone at (831) 425-9125. This Privacy Policy explains how
+                or by phone at (209) 765-3518. This Privacy Policy explains how
                 we collect, use, and protect information when you use our
                 website or services.
               </p>
@@ -155,7 +155,7 @@ export default function PrivacyPage() {
                     joel@upshiftt.com
                   </a>
                 </p>
-                <p>(831) 425-9125</p>
+                <p>(209) 765-3518</p>
               </div>
             </section>
           </div>

@@ -55,10 +55,10 @@ export default function Footer() {
                 joel@upshiftt.com
               </a>
               <a
-                href="tel:+18314259125"
+                href="tel:+12097653518"
                 className="hover:text-white transition-colors"
               >
-                Office: (831) 425-9125
+                Call or text: (209) 765-3518
               </a>
               <span>Scotts Valley, CA 95066</span>
             </div>

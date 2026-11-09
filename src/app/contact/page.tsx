@@ -92,9 +92,9 @@ export default function ContactPage() {
               {[
                 {
                   icon: "📞",
-                  label: "Office",
-                  value: "(831) 425-9125",
-                  href: "tel:+18314259125",
+                  label: "Call or Text",
+                  value: "(209) 765-3518",
+                  href: "tel:+12097653518",
                   note: "Leave a message and Joel will call you back.",
                 },
                 {
